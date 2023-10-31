@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+//        System.out.println(toRimNumbers());
         System.out.println(arabNumbers());
-        System.out.println(rimNumbers());
+//        System.out.println(toArabNumbers());
     }
 
     public static int arabNumbers() {
@@ -45,7 +46,7 @@ public class Main {
 
     }
 
-    public static String rimNumbers() {
+    public static String toRimNumbers() {
 
         Scanner scanner = new Scanner(System.in);
         int example = scanner.nextInt();
@@ -59,13 +60,36 @@ public class Main {
         int[] arabArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72};
         String result2 = null;
 
-        for (int i = 0; i < arabArray.length; i++) {
-            if (number == arabArray[i]) {
-                result2 = rimArray[i];
-            }
+        if (number > 0) {
+            result2 = rimArray[number - 1];
         }
         return result2;
 
     }
+
+
+//    public static int toArabNumbers() {
+//        Scanner scanner = new Scanner(System.in);
+//        String exampleString = scanner.nextLine();
+//        int arab = convArab(exampleString);
+//        return arab;
+//    }
+//
+//        public static int convArab(String numberRim) {
+//
+//            String[] rimArray = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII"};
+//            int[] arabArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72};
+//            int result2 = 0;
+//
+//            for (int i = 0; i < rimArray.length; i++) {
+//                if (numberRim == rimArray[i]) {
+//                    result2 = arabArray[i];
+//                }
+//            }
+//            return result2;
+//
+//        }
 }
+
+
 
