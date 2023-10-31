@@ -6,11 +6,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println(toArabNumbers());
-//        System.out.println(toRimNumbers());
-        System.out.println(rimNumbers());
         System.out.println(arabNumbers());
-
+        System.out.println(rimNumbers());
 
     }
 
@@ -21,31 +18,41 @@ public class Main {
         String substracting = "-";
         String multiplying = "*";
         String dividing = "/";
+        int result = 0;
         boolean containsAdding = example.contains(example.valueOf(adding));
         boolean containsSub = example.contains(example.valueOf(substracting));
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
-        int result = 0;
+
         if (containsAdding) {
             String[] array2 = example.split(" \\+ ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 + numberInt2;
+            if (numberInt1 > 0  && numberInt1 <= 10 && numberInt2 > 0  && numberInt2 <= 10) {
+                result = numberInt1 + numberInt2;
+            }
+
         } else if (containsSub) {
             String[] array2 = example.split(" \\- ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 - numberInt2;
+            if (numberInt1 > 0  && numberInt1 <= 10 && numberInt2 > 0  && numberInt2 <= 10) {
+                result = numberInt1 - numberInt2;            }
+
         } else if (containsMult) {
             String[] array2 = example.split(" \\* ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 * numberInt2;
+            if (numberInt1 > 0  && numberInt1 <= 10 && numberInt2 > 0  && numberInt2 <= 10) {
+                result = numberInt1 * numberInt2;
+            }
         } else if (containsDiv) {
             String[] array2 = example.split(" \\/ ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 / numberInt2;
+            if (numberInt1 > 0  && numberInt1 <= 10 && numberInt2 > 0  && numberInt2 <= 10) {
+                result = numberInt1 / numberInt2;
+            }
         }
         return result;
 
@@ -87,12 +94,6 @@ public class Main {
         return result;
     }
 
-//    public static String toRimNumbers(int numberInt) {
-//
-//        int exampleRim = numberInt;
-//        String rim = convRim(exampleRim);
-//        return rim;
-//    }
 
     public static String convRim(int number) {
 
@@ -107,13 +108,6 @@ public class Main {
 
     }
 
-
-//    public static int toArabNumbers(int numberInt) {
-//        Scanner scanner = new Scanner(System.in);
-//        String exampleString = scanner.nextLine();
-//        int arab = convArab(exampleString);
-//        return arab;
-//    }
 
     public static int convArab(String numberRim) {
 
