@@ -10,18 +10,37 @@ public class Main {
     public static int inputNumbers() {
         Scanner scanner = new Scanner(System.in);
         String example = scanner.nextLine();
-        String[] array2 = example.split("\\+");
-        int numberInt1 = Integer.parseInt(array2[0]);
-        int numberInt2 = Integer.parseInt(array2[1]);
-        return numberInt1 + numberInt2;
-
-
-
-
-//        int numberInt1 = Integer.parseInt(numberString1);
-//        String numberString2 = scanner.nextLine();
-//        int numberInt2 = Integer.parseInt(numberString2);
-
+        String adding = "+";
+        String substracting = "-";
+        String multiplying = "*";
+        String dividing ="/";
+        boolean containsAdding = example.contains(example.valueOf(adding));
+        boolean containsSub = example.contains(example.valueOf(substracting));
+        boolean containsMult = example.contains(example.valueOf(multiplying));
+        boolean containsDiv = example.contains(example.valueOf(dividing));
+        int result = 0;
+        if (containsAdding) {
+            String[] array2 = example.split(" \\+ " );
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = numberInt1 + numberInt2;
+        } else if (containsSub) {
+            String[] array2 = example.split(" \\- ");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = numberInt1 - numberInt2;
+        } else if (containsMult) {
+            String[] array2 = example.split(" \\* ");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = numberInt1 * numberInt2;
+        } else if (containsDiv) {
+            String[] array2 = example.split(" \\/ ");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = numberInt1 / numberInt2;
+        }
+        return result;
 
     }
 }
