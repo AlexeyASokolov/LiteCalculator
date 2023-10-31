@@ -6,9 +6,11 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(toArabNumbers());
-        System.out.println(toRimNumbers());
+//        System.out.println(toArabNumbers());
+//        System.out.println(toRimNumbers());
+        System.out.println(rimNumbers());
         System.out.println(arabNumbers());
+
 
     }
 
@@ -51,48 +53,46 @@ public class Main {
 
     public static String rimNumbers() {
         Scanner scanner = new Scanner(System.in);
-        String example = scanner.nextLine();
+        String exampleRim = scanner.nextLine();
         String adding = "+";
         String substracting = "-";
         String multiplying = "*";
         String dividing = "/";
-        boolean containsAdding = example.contains(example.valueOf(adding));
-        boolean containsSub = example.contains(example.valueOf(substracting));
-        boolean containsMult = example.contains(example.valueOf(multiplying));
-        boolean containsDiv = example.contains(example.valueOf(dividing));
-        int result = 0;
+        boolean containsAdding = exampleRim.contains(exampleRim.valueOf(adding));
+        boolean containsSub = exampleRim.contains(exampleRim.valueOf(substracting));
+        boolean containsMult = exampleRim.contains(exampleRim.valueOf(multiplying));
+        boolean containsDiv = exampleRim.contains(exampleRim.valueOf(dividing));
+
+        String result = null;
         if (containsAdding) {
-            String[] array2 = example.split(" \\+ ");
-            int numberInt1 = Integer.parseInt(array2[0]);
-            int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 + numberInt2;
+            String[] array2 = exampleRim.split(" \\+ ");
+            result = convRim(convArab(array2[0]) + convArab(array2[1]));
         } else if (containsSub) {
-            String[] array2 = example.split(" \\- ");
+            String[] array2 = exampleRim.split(" \\- ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 - numberInt2;
+//            result = numberInt1 - numberInt2;
         } else if (containsMult) {
-            String[] array2 = example.split(" \\* ");
+            String[] array2 = exampleRim.split(" \\* ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 * numberInt2;
+//            result = numberInt1 * numberInt2;
         } else if (containsDiv) {
-            String[] array2 = example.split(" \\/ ");
+            String[] array2 = exampleRim.split(" \\/ ");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-            result = numberInt1 / numberInt2;
+//            result = numberInt1 / numberInt2;
         }
 
-        return null;
+        return result;
     }
 
-    public static String toRimNumbers() {
-
-        Scanner scanner = new Scanner(System.in);
-        int example = scanner.nextInt();
-        String rim = convRim(example);
-        return rim;
-    }
+//    public static String toRimNumbers(int numberInt) {
+//
+//        int exampleRim = numberInt;
+//        String rim = convRim(exampleRim);
+//        return rim;
+//    }
 
     public static String convRim(int number) {
 
@@ -108,12 +108,12 @@ public class Main {
     }
 
 
-    public static int toArabNumbers() {
-        Scanner scanner = new Scanner(System.in);
-        String exampleString = scanner.nextLine();
-        int arab = convArab(exampleString);
-        return arab;
-    }
+//    public static int toArabNumbers(int numberInt) {
+//        Scanner scanner = new Scanner(System.in);
+//        String exampleString = scanner.nextLine();
+//        int arab = convArab(exampleString);
+//        return arab;
+//    }
 
     public static int convArab(String numberRim) {
 
