@@ -32,11 +32,18 @@ public class Main {
             if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
                 result = numberInt1 + numberInt2;
 
-            } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+//            } else if (numberInt2 != (int) numberInt2 || numberInt2 != (int) numberInt2) {
+//                try {
+//                    throw new NumberFormatException("Калькулятор умеет работать только с арабскими или римскими цифрами одновременно.");
+//                } catch (NumberFormatException e) {
+//                    System.out.println(e.getMessage());
+//                }
+
+            } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)){
                 try {
-                    throw new IOException();
+                    throw new IOException("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
                 } catch (IOException e) {
-                    System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
+                    System.out.println(e.getMessage());
                 }
             }
 
