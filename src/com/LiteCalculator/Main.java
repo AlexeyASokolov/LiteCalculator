@@ -32,10 +32,16 @@ public class Main {
             if (containsAdding) {
                 String[] array2 = example.split("\\s*\\+\\s*");
                 if (array2[0].equals("1") || array2[0].equals("2") || array2[0].equals("3") || array2[0].equals("4") || array2[0].equals("5") || array2[0].equals("6") || array2[0].equals("7") || array2[0].equals("8") || array2[0].equals("9") || array2[0].equals("10") || array2[1].equals("1") || array2[1].equals("2") || array2[1].equals("3") || array2[1].equals("4") || array2[1].equals("5") || array2[1].equals("6") || array2[1].equals("7") || array2[1].equals("8") || array2[1].equals("9") || array2[1].equals("10")) {
-                    int numberInt1 = Integer.parseInt(array2[0]);
-                    int numberInt2 = Integer.parseInt(array2[1]);
 
+                    try {
+                        int numberInt2 = Integer.parseInt(array2[1]);
+                        int numberInt1 = Integer.parseInt(array2[0]);
                         result = String.valueOf(numberInt1 + numberInt2);
+                    } catch (NumberFormatException e) {
+                        System.out.println("fuck");
+                    }
+
+
 
                 } else {
                     result = convRim(convArab(array2[0]) + convArab(array2[1]));
