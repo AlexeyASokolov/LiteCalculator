@@ -1,5 +1,4 @@
 package com.LiteCalculator;
-
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -10,37 +9,37 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String example = scanner.nextLine();
-        System.out.println(arabNumbers(example));
-        System.out.println(rimNumbers(example));
+        System.out.println(Numbers(example));
 
     }
 
 
-    public static int arabNumbers(String example) throws Exception {
+    public static String Numbers(String example) throws Exception {
         String adding = "+";
         String substracting = "-";
         String multiplying = "*";
         String dividing = "/";
-        int result = 0;
+        String result = null;
         boolean containsAdding = example.contains(example.valueOf(adding));
         boolean containsSub = example.contains(example.valueOf(substracting));
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
-        do {
+
             if (containsAdding) {
                 String[] array2 = example.split("\\s*\\+\\s*");
 
                 int numberInt1 = Integer.parseInt(array2[0]);
                 int numberInt2 = Integer.parseInt(array2[1]);
                 if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = numberInt1 + numberInt2;
+                    result = String.valueOf(numberInt1 + numberInt2);
 
-                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+                if ((numberInt1 < 1 && numberInt1 > 10) && (numberInt2 < 1 && numberInt2 > 10)) {
                     try {
                         throw new IOException("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
                     } catch (IOException e) {
-                        System.out.println(e.getMessage());
+                        result = e.getMessage();
                     }
+                }
                 }
 
             } else if (containsSub) {
@@ -48,7 +47,7 @@ public class Main {
                 int numberInt1 = Integer.parseInt(array2[0]);
                 int numberInt2 = Integer.parseInt(array2[1]);
                 if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = numberInt1 - numberInt2;
+                    result = String.valueOf(numberInt1 - numberInt2);
                 } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
                     try {
                         throw new IOException();
@@ -62,7 +61,7 @@ public class Main {
                 int numberInt1 = Integer.parseInt(array2[0]);
                 int numberInt2 = Integer.parseInt(array2[1]);
                 if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = numberInt1 * numberInt2;
+                    result = String.valueOf(numberInt1 * numberInt2);
                 } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
                     try {
                         throw new IOException();
@@ -76,7 +75,7 @@ public class Main {
                 int numberInt1 = Integer.parseInt(array2[0]);
                 int numberInt2 = Integer.parseInt(array2[1]);
                 if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = numberInt1 / numberInt2;
+                    result = String.valueOf(numberInt1 / numberInt2);
                 } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
                     try {
                         throw new IOException();
@@ -85,43 +84,24 @@ public class Main {
 
                     }
                 }
-            }
-            return result;
-
-        } while (false);
-
-
-    }
-
-    public static String rimNumbers(String exampleRim) {
-        String adding = "+";
-        String substracting = "-";
-        String multiplying = "*";
-        String dividing = "/";
-        boolean containsAdding = exampleRim.contains(exampleRim.valueOf(adding));
-        boolean containsSub = exampleRim.contains(exampleRim.valueOf(substracting));
-        boolean containsMult = exampleRim.contains(exampleRim.valueOf(multiplying));
-        boolean containsDiv = exampleRim.contains(exampleRim.valueOf(dividing));
-
-        String result = null;
-        if (containsAdding) {
-            String[] array2 = exampleRim.split("\\s*\\+\\s*");
-            result = convRim(convArab(array2[0]) + convArab(array2[1]));
+            } else if (containsAdding) {
+            String[] array2 = example.split("\\s*\\+\\s*");
+                result = convRim(convArab(array2[0]) + convArab(array2[1]));
         } else if (containsSub) {
-            String[] array2 = exampleRim.split("\\s*\\-\\s*");
+            String[] array2 = example.split("\\s*\\-\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-//            result = numberInt1 - numberInt2;
+                result = convRim(convArab(array2[0]) - convArab(array2[1]));
         } else if (containsMult) {
-            String[] array2 = exampleRim.split("\\s*\\*\\s*");
+            String[] array2 = example.split("\\s*\\*\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-//            result = numberInt1 * numberInt2;
+                result = convRim(convArab(array2[0]) * convArab(array2[1]));
         } else if (containsDiv) {
-            String[] array2 = exampleRim.split("\\s*\\/\\s*");
+            String[] array2 = example.split("\\s*\\/\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-//            result = numberInt1 / numberInt2;
+                result = convRim(convArab(array2[0]) / convArab(array2[1]));
         }
 
         return result;
