@@ -30,7 +30,7 @@ public class Main {
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
 
-        if (!containsAdding || !containsDiv || !containsMult || !containsSub){
+        if (!containsAdding && !containsDiv && !containsMult && !containsSub){
             try {
                 throw  new IOException();
             } catch (IOException e){
@@ -42,6 +42,13 @@ public class Main {
         if (containsAdding || containsDiv || containsMult || containsSub) {
             if (containsAdding) {
                 String[] array2 = example.split("\\s*\\+\\s*");
+                if (array2.length > 2){
+                    try {
+                        throw new IOException();
+                    } catch (IOException e){
+                        System.out.println("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                    }
+                }
                 if (array2[0].equals("1") || array2[0].equals("2") || array2[0].equals("3") || array2[0].equals("4") || array2[0].equals("5") || array2[0].equals("6") || array2[0].equals("7") || array2[0].equals("8") || array2[0].equals("9") || array2[0].equals("10") || array2[1].equals("1") || array2[1].equals("2") || array2[1].equals("3") || array2[1].equals("4") || array2[1].equals("5") || array2[1].equals("6") || array2[1].equals("7") || array2[1].equals("8") || array2[1].equals("9") || array2[1].equals("10")) {
 
                     try {
