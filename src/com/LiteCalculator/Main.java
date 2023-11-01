@@ -1,4 +1,5 @@
 package com.LiteCalculator;
+
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -25,83 +26,57 @@ public class Main {
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
 
-            if (containsAdding) {
-                String[] array2 = example.split("\\s*\\+\\s*");
 
-                int numberInt1 = Integer.parseInt(array2[0]);
-                int numberInt2 = Integer.parseInt(array2[1]);
-                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = String.valueOf(numberInt1 + numberInt2);
-
-                if ((numberInt1 < 1 && numberInt1 > 10) && (numberInt2 < 1 && numberInt2 > 10)) {
-                    try {
-                        throw new IOException("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                    } catch (IOException e) {
-                        result = e.getMessage();
-                    }
-                }
-                }
-
-            } else if (containsSub) {
-                String[] array2 = example.split("\\s*\\-\\s*");
-                int numberInt1 = Integer.parseInt(array2[0]);
-                int numberInt2 = Integer.parseInt(array2[1]);
-                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = String.valueOf(numberInt1 - numberInt2);
-                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                    try {
-                        throw new IOException();
-                    } catch (IOException e) {
-                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                    }
-                }
-
-            } else if (containsMult) {
-                String[] array2 = example.split("\\s*\\*\\s*");
-                int numberInt1 = Integer.parseInt(array2[0]);
-                int numberInt2 = Integer.parseInt(array2[1]);
-                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = String.valueOf(numberInt1 * numberInt2);
-                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                    try {
-                        throw new IOException();
-                    } catch (IOException e) {
-                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-
-                    }
-                }
-            } else if (containsDiv) {
-                String[] array2 = example.split("\\s*\\/\\s*");
-                int numberInt1 = Integer.parseInt(array2[0]);
-                int numberInt2 = Integer.parseInt(array2[1]);
-                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                    result = String.valueOf(numberInt1 / numberInt2);
-                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                    try {
-                        throw new IOException();
-                    } catch (IOException e) {
-                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-
-                    }
-                }
-            } else if (containsAdding) {
+        if (containsAdding) {
             String[] array2 = example.split("\\s*\\+\\s*");
-                result = convRim(convArab(array2[0]) + convArab(array2[1]));
+
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+
+                result = String.valueOf(numberInt1 + numberInt2);
+            }
+
         } else if (containsSub) {
             String[] array2 = example.split("\\s*\\-\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-                result = convRim(convArab(array2[0]) - convArab(array2[1]));
+            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                result = String.valueOf(numberInt1 - numberInt2);
+            }
+
         } else if (containsMult) {
             String[] array2 = example.split("\\s*\\*\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-                result = convRim(convArab(array2[0]) * convArab(array2[1]));
+            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                result = String.valueOf(numberInt1 * numberInt2);
+            }
         } else if (containsDiv) {
             String[] array2 = example.split("\\s*\\/\\s*");
             int numberInt1 = Integer.parseInt(array2[0]);
             int numberInt2 = Integer.parseInt(array2[1]);
-                result = convRim(convArab(array2[0]) / convArab(array2[1]));
+            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                result = String.valueOf(numberInt1 / numberInt2);
+            }
+        } else if (containsAdding) {
+            String[] array2 = example.split("\\s*\\+\\s*");
+            result = convRim(convArab(array2[0]) + convArab(array2[1]));
+        } else if (containsSub) {
+            String[] array2 = example.split("\\s*\\-\\s*");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = convRim(convArab(array2[0]) - convArab(array2[1]));
+        } else if (containsMult) {
+            String[] array2 = example.split("\\s*\\*\\s*");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = convRim(convArab(array2[0]) * convArab(array2[1]));
+        } else if (containsDiv) {
+            String[] array2 = example.split("\\s*\\/\\s*");
+            int numberInt1 = Integer.parseInt(array2[0]);
+            int numberInt2 = Integer.parseInt(array2[1]);
+            result = convRim(convArab(array2[0]) / convArab(array2[1]));
         }
 
         return result;
