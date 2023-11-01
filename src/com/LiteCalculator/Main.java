@@ -30,6 +30,14 @@ public class Main {
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
 
+        if (!containsAdding || !containsDiv || !containsMult || !containsSub){
+            try {
+                throw  new IOException();
+            } catch (IOException e){
+                System.out.println("Cтрока не является математической операцией");
+            }
+        }
+
 
         if (containsAdding || containsDiv || containsMult || containsSub) {
             if (containsAdding) {
