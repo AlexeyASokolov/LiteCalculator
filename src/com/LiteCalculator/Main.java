@@ -2,19 +2,21 @@ package com.LiteCalculator;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println(arabNumbers());
-        System.out.println(rimNumbers());
+
+
+        Scanner scanner = new Scanner(System.in);
+        String example = scanner.nextLine();
+        System.out.println(arabNumbers(example));
+        System.out.println(rimNumbers(example));
 
     }
 
-    public static int arabNumbers() throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        String example = scanner.nextLine();
+
+    public static int arabNumbers(String example) throws Exception {
         String adding = "+";
         String substracting = "-";
         String multiplying = "*";
@@ -24,77 +26,74 @@ public class Main {
         boolean containsSub = example.contains(example.valueOf(substracting));
         boolean containsMult = example.contains(example.valueOf(multiplying));
         boolean containsDiv = example.contains(example.valueOf(dividing));
+        do {
+            if (containsAdding) {
+                String[] array2 = example.split("\\s*\\+\\s*");
 
-        if (containsAdding) {
-            String[] array2 = example.split("\\s*\\+\\s*");
-            int numberInt1 = Integer.parseInt(array2[0]);
-            int numberInt2 = Integer.parseInt(array2[1]);
-            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                result = numberInt1 + numberInt2;
+                int numberInt1 = Integer.parseInt(array2[0]);
+                int numberInt2 = Integer.parseInt(array2[1]);
+                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                    result = numberInt1 + numberInt2;
 
-//            } else if (numberInt2 != (int) numberInt2 || numberInt2 != (int) numberInt2) {
-//                try {
-//                    throw new NumberFormatException("Калькулятор умеет работать только с арабскими или римскими цифрами одновременно.");
-//                } catch (NumberFormatException e) {
-//                    System.out.println(e.getMessage());
-//                }
+                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+                    try {
+                        throw new IOException("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
 
-            } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)){
-                try {
-                    throw new IOException("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+            } else if (containsSub) {
+                String[] array2 = example.split("\\s*\\-\\s*");
+                int numberInt1 = Integer.parseInt(array2[0]);
+                int numberInt2 = Integer.parseInt(array2[1]);
+                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                    result = numberInt1 - numberInt2;
+                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+                    try {
+                        throw new IOException();
+                    } catch (IOException e) {
+                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
+                    }
+                }
+
+            } else if (containsMult) {
+                String[] array2 = example.split("\\s*\\*\\s*");
+                int numberInt1 = Integer.parseInt(array2[0]);
+                int numberInt2 = Integer.parseInt(array2[1]);
+                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                    result = numberInt1 * numberInt2;
+                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+                    try {
+                        throw new IOException();
+                    } catch (IOException e) {
+                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
+
+                    }
+                }
+            } else if (containsDiv) {
+                String[] array2 = example.split("\\s*\\/\\s*");
+                int numberInt1 = Integer.parseInt(array2[0]);
+                int numberInt2 = Integer.parseInt(array2[1]);
+                if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
+                    result = numberInt1 / numberInt2;
+                } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
+                    try {
+                        throw new IOException();
+                    } catch (IOException e) {
+                        System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
+
+                    }
                 }
             }
+            return result;
 
-        } else if (containsSub) {
-            String[] array2 = example.split("\\s*\\-\\s*");
-            int numberInt1 = Integer.parseInt(array2[0]);
-            int numberInt2 = Integer.parseInt(array2[1]);
-            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                result = numberInt1 - numberInt2;
-            } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                try {
-                    throw new IOException();
-                } catch (IOException e) {
-                    System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                }
-            }
+        } while (false);
 
-        } else if (containsMult) {
-            String[] array2 = example.split("\\s*\\*\\s*");
-            int numberInt1 = Integer.parseInt(array2[0]);
-            int numberInt2 = Integer.parseInt(array2[1]);
-            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                result = numberInt1 * numberInt2;
-            }else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                try {
-                    throw new IOException();
-                } catch (IOException e) {
-                    System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                }
-            }
-        } else if (containsDiv) {
-            String[] array2 = example.split("\\s*\\/\\s*");
-            int numberInt1 = Integer.parseInt(array2[0]);
-            int numberInt2 = Integer.parseInt(array2[1]);
-            if ((numberInt1 > 0 && numberInt1 <= 10) && (numberInt2 > 0 && numberInt2 <= 10)) {
-                result = numberInt1 / numberInt2;
-            } else if ((numberInt1 <= 1 || numberInt1 >= 10) || (numberInt2 <= 1 || numberInt2 >= 10)) {
-                try {
-                    throw new IOException();
-                } catch (IOException e) {
-                    System.out.println("Калькулятор должен принимать на вход числа от 1 до 10 включительно, не более.");
-                }
-            }
-        }
-        return result;
 
     }
 
-    public static String rimNumbers() {
-        Scanner scanner = new Scanner(System.in);
-        String exampleRim = scanner.nextLine();
+    public static String rimNumbers(String exampleRim) {
         String adding = "+";
         String substracting = "-";
         String multiplying = "*";
