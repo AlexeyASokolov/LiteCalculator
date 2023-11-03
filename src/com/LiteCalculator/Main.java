@@ -1,12 +1,9 @@
 package com.LiteCalculator;
-
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.lang.NumberFormatException;
 
 public class Main {
-    private static int index;
 
     public static void main(String[] args) throws Exception {
 
