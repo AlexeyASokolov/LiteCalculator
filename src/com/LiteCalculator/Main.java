@@ -9,8 +9,8 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-        String example = scanner.nextLine();
-        System.out.println(StringCalc(example));
+        String StringInput = scanner.nextLine();
+        System.out.println(StringCalc(StringInput));
 
     }
 
