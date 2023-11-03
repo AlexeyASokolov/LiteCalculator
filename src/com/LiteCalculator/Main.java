@@ -13,12 +13,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String example = scanner.nextLine();
-        System.out.println(Numbers(example));
+        System.out.println(StringCalc(example));
 
     }
 
 
-    public static String Numbers(String example) throws Exception {
+    public static String StringCalc(String example) throws Exception {
         String adding = "+";
         String substracting = "-";
         String multiplying = "*";
@@ -134,7 +134,6 @@ public class Main {
         int result2 = arabArray[index];
         return result2;
     }
-
 }
 
 
